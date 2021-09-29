@@ -1,0 +1,33 @@
+/* -----
+SVG Icons
+----- */
+
+.svg-icon {
+    width: 2em;
+    height: 1em;
+    padding-right: .5em;
+    padding-left: .5em;
+    vertical-align: text-top;
+  }
+
+  .right-section .svg-icon,.center-section .svg-icon {
+    width: 3em;
+    height: 2em;
+  } 
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill: white;
+  }
+  
+  .svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+  }
+
+  .svg-icon path:hover,
+  .svg-icon polygon:hover,
+  .svg-icon rect:hover {
+    fill: red;
+  }

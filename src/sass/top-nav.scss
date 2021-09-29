@@ -1,0 +1,153 @@
+$primary-color:#1f1f1f;
+
+//$light-background: #1f4756;
+
+$light-text: white;
+$light-box-shadow:0px -8px 11px -5px rgba(189, 186, 185, 0.67);
+
+$dark-background: $primary-color;
+$dark-text: #1f1f1f;
+
+$light-background: lighten($dark-background,70%);
+
+/*
+:root {
+    --primary-color: #302AE6;
+    --secondary-color: #536390;
+    --font-color: #424242;
+    --bg-color: #fff;
+    --heading-color: #292922;
+}
+
+[data-theme="dark"] {
+    --primary-color: #9A97F3;
+    --secondary-color: #818cab;
+    --font-color: #e1e1ff;
+    --bg-color: #161625;
+    --heading-color: #818cab;
+}
+*/
+
+@mixin top-bar-shadow($value) {
+    -webkit-box-shadow: ($value);
+    -moz-box-shadow: ($value);
+    box-shadow: ($value);
+  }
+  
+
+  @mixin theme-colors($light-theme: true) {
+    @if $light-theme {
+      background-color: $light-background !important;
+      color: $dark-text !important;
+      .side-section a,
+      .left-section a,
+      .center-section input,
+      .svg-icon path,
+      section.footer-section a{
+        color: $dark-text !important;
+        fill: $dark-text !important;
+      }
+      footer{
+        box-shadow: $light-box-shadow;
+      }
+
+      .top-nav-container{
+        box-shadow: #afafaf 0px 4px 16px;
+      }
+    
+    } @else {
+      background-color: $dark-background !important;
+      color: $light-text !important;
+    }
+  }
+  
+  .light-mode {
+    @include theme-colors($light-theme: true);
+  }
+  .dark-mode {
+    @include theme-colors($light-theme: false);
+  }
+   
+  body{
+    background-color: $primary-color;
+  }
+  
+
+.top-nav-container{
+    height: 50px;
+    background-color: $primary-color;
+    flex-shrink: 0;
+    display: block;
+   @include top-bar-shadow(rgba(14, 14, 14, 1) 0px 4px 16px);
+   z-index: 2;
+}
+.top-nav {
+    display: flex;
+    height: 100% ;
+}
+
+.left-section{
+    flex-grow: 1;
+    flex-shrink: 2;
+    width: 100%;
+    display: flex;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+
+    a{
+        display: flex;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        text-decoration: none;
+        color: white; 
+        font-size: 1.5rem;
+    }
+}
+
+.center-section{
+    @extend .left-section;
+    flex-grow: 2;
+    flex-shrink: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-section{
+    @extend .left-section;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@mixin ipad {
+	@media only screen and (max-width: 768px) {@content;}
+}
+
+@mixin phone {
+	@media only screen and (max-width: 600px) {@content;}
+}
+
+
+@include ipad{
+
+}
+
+@include phone{
+	.center-section,.right-section{
+    display: none;
+  }
+
+  .left-section{
+    justify-content: space-around;
+  }
+
+
+}
+
+
+

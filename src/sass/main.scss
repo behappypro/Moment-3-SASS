@@ -1,0 +1,124 @@
+@mixin card-transform($value) {
+    transform: ($value);
+}
+
+@mixin card-shadow($value1,$value2,$value3,$value4,$value5) {
+    -webkit-box-shadow: ($value1,$value2,$value3,$value4,$value5);
+	-moz-box-shadow: ($value1,$value2,$value3,$value4,$value5);
+	box-shadow: ($value1,$value2,$value3,$value4,$value5);
+}
+
+@mixin avatar($size, $circle: false) {
+    width: $size;
+    height: $size;
+  
+    @if $circle {
+      border-radius: $size / 2;
+    }
+
+    @else {
+        border-radius: 0;
+      }
+  }
+
+main{
+    margin-left: 250px;
+}
+
+.section-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 260px;
+    height: 380px;
+    background-color: #1d1d1d;
+    border-radius: 1rem;
+    padding: 1.5rem 1.5rem 0;
+    margin: 4rem 2rem 2rem;
+    border: 1px solid #292929;
+    @include card-shadow(
+        rgba(0, 0, 0, 0.25) 0px 15px 15px, 
+        rgba(0, 0, 0, 0.12) 0px -1px 3px, 
+        rgba(0, 0, 0, 0.12) 0px 14px 16px, 
+        rgba(0, 0, 0, 0.17) 0px 11px 11px, 
+        rgba(0, 0, 0, 0.09) 0px -3px 5px);
+    
+
+    .card-img{
+        @include card-transform(translate(2.5rem, -6rem));
+        position: absolute;
+        filter: drop-shadow(5px 10px 15px rgba(8,9,13,0.2));
+        object-fit: cover;
+        @include avatar(130px, $circle: true);
+    }
+    .card-title{
+        font-size: 1.6rem;
+        color: white;
+        margin-bottom: 2rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    
+    .card-data{
+        transform: translateY(3rem);
+        color: white;
+    }
+    
+    .card-occupation{
+        display: inline-block;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        text-decoration: underline;
+    }
+    
+    .card-description{
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        font-style: oblique;
+    }
+    
+    .card-button{
+        display: block;
+        width: max-content;
+        padding: 0.5rem 4.8rem;
+        background-color: #c38fff;
+        border-radius: .5rem;
+        font-weight: 600;
+        color: black;
+        border: 1px solid #444444cc;
+        margin-top: 2rem;
+    }
+}
+
+.title{
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    font-size: 4rem;
+    padding-bottom: 5rem;
+}
+
+@mixin ipad {
+	@media only screen and (max-width: 768px) {@content;}
+}
+
+@mixin phone {
+	@media only screen and (max-width: 600px) {@content;}
+}
+
+
+@include phone{
+    main {
+        margin-left: 0;
+    }
+    .title{
+        padding: 0;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+}

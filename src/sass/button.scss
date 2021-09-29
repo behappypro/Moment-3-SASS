@@ -1,0 +1,24 @@
+button {
+    background-color: unset;
+    border:none;
+    cursor: pointer;
+}
+
+input#search {
+    background-color: #464648;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.6rem;
+    color:white;
+    width: 40%;
+}
+
+::placeholder{
+    color: white;
+    padding: .5rem;
+    font-size: 1.2rem;
+}
+
+
+
+
